@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 #{title}: #{preservestatus.name}
+  p= preservestatus.status
+
+    p Do you really want to delete this Preserve Status?
+
+    form(method='POST' action='')
+        div.form-group
+        input#preservestatusid.form-control(type='hidden',name='preservestatusid', required='true', value=preservestatus._id )
+
+        button.btn.btn-primary(type='submit') Delete

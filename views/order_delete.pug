@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 #{title}: #{order.name}
+
+  if order_animals.length
+
+    p #[strong Delete the following animals before attempting to delete this class.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Animals
+
+      dl
+      each animal in order_animals
+        dt
+          a(href=animal.url) #{animal.name}
+        dd #{animal.description}
+
+  else
+    p Do you really want to delete this Order?
+
+    form(method='POST' action='')
+      div.form-group
+        input#orderid.form-control(type='hidden',name='orderid', required='true', value=order._id )
+
+      button.btn.btn-primary(type='submit') Delete

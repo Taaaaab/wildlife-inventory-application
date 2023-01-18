@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 #{title}: #{animalclass.name}
+
+  if animalclass_animals.length
+
+    p #[strong Delete the following animals before attempting to delete this class.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Animals
+
+      dl
+      each animal in animalclass_animals
+        dt
+          a(href=animal.url) #{animal.name}
+        dd #{animal.description}
+
+  else
+    p Do you really want to delete this Class?
+
+    form(method='POST' action='')
+      div.form-group
+        input#animalclassid.form-control(type='hidden',name='animalclassid', required='true', value=animalclass._id )
+
+      button.btn.btn-primary(type='submit') Delete

@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1 Animal: #{animal.name}
+
+  p #[strong Binomial:] #{animal.binomial}
+  p #[strong Class:]
+    a(href=animal.animalclass.url) #{animal.animalclass.name}
+  p #[strong Order:]
+    each val, index in animal.order
+      a(href=val.url) #{val.name}
+      if index < animal.order.length - 1
+        |,
+  p #[strong Description:] #{animal.description}
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Preserve Status
+
+    each val in preserve_statuses
+      hr
+      if val.status=='Currently in preserve'
+        p.text-success #{val.status}
+      else if val.status=='Currently not in preserve'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status}
+      p #[strong Name:] #{val.name}
+      if val.status!='Currently in preserve'
+        p #[strong Expected back:] #{val.expected_back_formatted}
+      p #[strong Id:]
+        a(href=val.url) #{val._id}
+
+    else
+      p There are no animals of this species in the preserve.
+  
+  hr
+  p
+    a(href=animal.url+'/delete') Delete animal
+  p
+    a(href=animal.url+'/update') Update animal
+

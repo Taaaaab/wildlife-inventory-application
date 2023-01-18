@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title}: #{animal.name}
+  p= animal.binomial
+
+  if animal_preservestatuses.length
+
+    p #[strong Delete the following preserve statuses before attempting to delete this animal.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Preserve Status:
+
+      dl
+      each preservestatus in animal_preservestatuses
+        dt
+          a(href=preservestatus.url) #{preservestatus.name}
+        dd #{preservestatus.status}
+
+  else
+    p Do you really want to delete this Animal?
+
+    form(method='POST' action='')
+      div.form-group
+        input#animalid.form-control(type='hidden',name='animalid', required='true', value=animal._id )
+
+      button.btn.btn-primary(type='submit') Delete

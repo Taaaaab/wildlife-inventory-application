@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='animal') Animal:
+      select#animal.form-control(type='select' placeholder='Select animal' name='animal' required='true')
+        - animal_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for animal in animal_list
+          option(value=animal._id, selected=(selected_animal==animal._id.toString() || animal._id.toString()==selected_animal ? 'selected' : false) ) #{animal.name}
+
+    div.form-group
+      label(for='name') Name:
+      input#name.form-control(type='text' placeholder='Name of animal' name='name' required='true' value=(undefined===preservestatus ? '' : preservestatus.name))
+    div.form-group
+      label(for='expected_back') Date animal expected back:
+      input#expected_back.form-control(type='date' name='expected_back' value=(undefined===preservestatus ? '' : preservestatus.expected_back))
+
+    div.form-group
+      label(for='status') Status:
+      select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+        option(value='Currently in preserve') Currently in preserve
+        option(value='Currently not in preserve') Currently not in preserve
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

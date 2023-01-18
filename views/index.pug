@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em WildlifePreserve].
+
+  h1 Dynamic content
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The preserve has the following record counts:
+
+    ul
+      li #[strong Animals:] !{data.animal_count}
+      li #[strong Animals of the preserve:] !{data.preserve_status_count}
+      li #[strong Animals currently in preserve:] !{data.preserve_status_current_count}
+      li #[strong Classes:] !{data.class_count}
+      li #[strong Orders:] !{data.order_count}

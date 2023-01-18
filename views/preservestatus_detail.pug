@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+  h1 ID: #{preservestatus._id}
+
+  p #[strong Animal:]
+    a(href=preservestatus.animal.url)  #{preservestatus.animal.name}
+  p #[strong Name:] #{preservestatus.name}
+
+  p #[strong Status:]
+    if preservestatus.status=='Currently in preserve'
+      span.text-success  #{preservestatus.status}
+    else if preservestatus.status=='Currently not in preserve'
+      span.text-danger #{preservestatus.status}
+    else
+      span.text-warning #{preservestatus.status}
+
+  if preservestatus.status!='Currently in preserve'
+    p #[strong Expected back:] #{preservestatus.expected_back_formatted}
+
+  hr
+  p
+    a(href=preservestatus.url+'/delete') Delete Preserve Status
+  p
+    a(href=preservestatus.url+'/update') Update Preserve Status
+

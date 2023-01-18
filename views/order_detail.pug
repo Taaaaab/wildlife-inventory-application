@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 Order: #{order.name}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Animals
+
+    dl
+      each animal in order_animals
+        dt
+          a(href=animal.url) #{animal.name}
+        dd #{animal.description}
+
+      else
+        p This order has no animals
+  
+  hr
+  p
+    a(href=order.url+'/delete') Delete Order
+  p
+    a(href=order.url+'/update') Update Order

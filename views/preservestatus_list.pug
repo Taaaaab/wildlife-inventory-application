@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each val in preservestatus_list
+      li
+        a(href=val.url) #{val.animal.name} : #{val.name} -
+        if val.status=='Currently in preserve'
+          span.text-success #{val.status}
+        else if val.status=='Currently not in preserve'
+          span.text-danger #{val.status}
+        else
+          span.text-warning #{val.status}
+        if val.status!='Currently in preserve'
+          span  (Expected back: #{val.expected_back_formatted} )
+
+    else
+      li There are no animals in this preserve.

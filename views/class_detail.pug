@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+  h1 Class: #{animalclass.name}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Animals
+
+    dl
+      each animal in class_animals
+        dt
+          a(href=animal.url) #{animal.name}
+          |  (#{animal.binomial})
+        dd #{animal.description}
+
+      else
+        p This class has no animals.
+  
+  hr
+  p
+    a(href=animalclass.url+'/delete') Delete Class
+  p
+    a(href=animalclass.url+'/update') Update Class
+
+

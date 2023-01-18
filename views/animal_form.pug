@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Animal Name:
+      input#name.form-control(type='text', placeholder='Name of animal' name='name' required='true' value=(undefined===animal ? '' : animal.name) )
+    div.form-group
+      label(for='binomial') Binomial Name:
+      input#binomial.form-control(type='text', placeholder='Binomial name of animal' name='binomial' required='true' value=(undefined===animal ? '' : animal.binomial) )
+    div.form-group
+      label(for='description') Description:
+      textarea#description.form-control(type='textarea', placeholder='Description' name='description' required='true') #{undefined===animal ? '' : animal.description}
+    div.form-group
+      label(for='animalclass') Class:
+      select#animalclass.form-control(type='select', placeholder='Select class' name='animalclass' required='true' )
+        - animalclasses.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for animalclass in animalclasses
+          if animal
+            //- Handle GET form, where book.author is an object, and POST form, where it is a string.
+            option(
+              value=animalclass._id
+              selected=(
+                animalclass._id.toString()==animal.animalclass._id
+                || animalclass._id.toString()==animal.animalclass
+              ) ? 'selected' : false
+            ) #{animalclass.name}
+          else
+            option(value=animalclass._id) #{animalclass.name}
+    div.form-group
+      label Order:
+      div
+        for order in orders
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='order', id=order._id, value=order._id, checked=order.checked )
+            label(for=order._id) #{order.name}
+    div.form-group
+      label(for='img') Image:
+      input#img.file-input(type='file', name='img' accept="image/png, image/gif, image/jpeg" required='true')
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

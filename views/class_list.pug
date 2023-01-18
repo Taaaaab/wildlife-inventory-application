@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each animalclass in class_list
+      li
+        a(href=animalclass.url) #{animalclass.name}
+
+    else
+      li There are no classes.

@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+require('dotenv').config()
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -15,7 +16,7 @@ var app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
 // Set up mongoose connection
-const dev_db_url = "mongodb+srv://associate-developer:Adev-1234@cluster0.rhomd7n.mongodb.net/wildlife_inventory?retryWrites=true&w=majority";
+const dev_db_url = process.env.MONGODB_URL;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });

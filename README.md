@@ -5,7 +5,7 @@ animals, classification, order and status for a fictional wildlife preserve.
 Practice using Mongoose for backend MongoDB database with working CRUD
 operations.
 
-![Alt text](https://github.com/Taaaaab/personal-portfolio/blob/main/src/assets/wildlife.png?raw=true "Screenshot")
+![Alt text](https://github.com/Taaaaab/personal-portfolio/blob/main/images/wildlife.png?raw=true "Screenshot")
 
 ## Built With
 

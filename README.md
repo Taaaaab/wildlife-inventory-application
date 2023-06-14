@@ -18,19 +18,12 @@ operations.
 
 https://wildlife-inventory-application.onrender.com/wildlife
 
-## Getting Started
+## Examples:
 
-In order to setup and work on this project on your own, you will need to:
+Take a look at these couple examples that I have in my own portfolio:
 
-1. Clone this project:
-   `https://github.com/Taaaaab/wildlife-inventory-application.git`
+**Memory Card Game:** https://github.com/Taaaaab/memory-card
 
-2. Once you have cloned this project, you can install the required dependencies by using:
-   `npm install`
+**Calculator:** https://taaaaab.github.io/calculator-project/
 
-3. A live demo of the project can be started by using:  
-   `npm start`
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
+**Weather App:** https://github.com/Taaaaab/weather-app
